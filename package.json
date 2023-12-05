@@ -1,0 +1,21 @@
+{
+    "name": "BE-2-BANDUNG-32",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "node app.js",
+      "start:dev": "nodemon app.js",
+      "init:env": "cp .env.example >> .env"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "dotenv": "^16.3.1"
+    },
+    "devDependencies": {
+      "nodemon": "^3.0.1"
+    }
+  }
+  
