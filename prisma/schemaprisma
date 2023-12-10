@@ -1,0 +1,34 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+const { INTEGER } = require("sequelize")
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "binary"
+}
+  
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+  
+// Model DataBase 
+model News {
+  id Int @id @default(autoincrement())
+  jenis String
+  judul String
+  publish String
+  sumber String
+  content String @db.Text
+  gambar String?
+  createdAt Date @default(now()) @map(name: "created_at")
+  categoryId INTEGER?
+  category Category? @relation(fields: [categoryId], references: [id])
+}
+  
+model Category {
+  id Int @id @default(autoincrement())
+  jenis String
+  category News[]
+}
