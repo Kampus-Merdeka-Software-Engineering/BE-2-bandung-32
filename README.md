@@ -21,7 +21,7 @@ lalu akan muncul npm version yang telah terinstall.
 npm install express dotenv cors mysql2 @prisma/client
 ```
 
-6. install devDevendency karena pake nodemon
+6. install devDevendency karena menggunakan nodemon
 ```bash
 npm install -D nodemon 
 npm run start:dev
