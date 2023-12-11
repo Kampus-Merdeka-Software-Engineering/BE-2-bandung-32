@@ -21,21 +21,19 @@ categoryRoutes.get("/:id", async (req, res) => {
 
 // create
 categoryRoutes.post("/", async (req, res) => {
-    const { name } = req.body 
-    // todo - handle if name is not passed in 
-    if (!name) {
-        console.error('Name is required');
-        return res.status(422).json({ message: 'Name is required' });
-      }
+    const { name } = req.body;
+if (!name) {
+    console.error('Name is required');
+    return res.status(422).json({ message: 'Name is required' });
+}
     const newCategory = await prisma.category_news.create({
-      data:{
-        name: name,
-      },
-    }) ;
+    data:{
+        name: req.body.name,
+    },
+});
     res.status(201).json({
         message: "Category created",
         data: newCategory
     })
 })
-
 module.exports = { categoryRoutes };
