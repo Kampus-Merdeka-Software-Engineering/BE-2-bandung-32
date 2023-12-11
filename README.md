@@ -69,24 +69,10 @@ app.get("/", async(req, res) => {
 });
 
 // Routes for 'news'
-const newsRoutes = require('./newsRoutes');  // Pastikan file newsRoutes.js telah ada
 app.use("/news", newsRoutes);
 
 // Routes for 'categories'
-const categoryRoutes = require('./categoryRoutes');  // Pastikan file categoryRoutes.js telah ada
 app.use("/categories", categoryRoutes);
-
-// Endpoint untuk mendapatkan semua kategori
-app.get('/categories', async (req, res) => {
-  const categories = await prisma.category.findMany();
-  res.json(categories);
-});
-
-// Endpoint untuk mendapatkan semua data dari Database_32
-app.get('/database_32', async (req, res) => {
-  const data = await prisma.database_32.findMany();
-  res.json(data);
-});
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is already running at ${PORT}`);
