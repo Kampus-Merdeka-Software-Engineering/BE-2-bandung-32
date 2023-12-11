@@ -15,17 +15,17 @@ newsRoutes.get("/", async(req, res) => {
 //create new news
 newsRoutes.post("/", async (req, res) => {
     const newnews = await prisma.news.create({
-        data: {
-            id: req.body.id,
-            jenis: req.body.jenis,
-            judul: req.body.judul,
-            publish: req.body.publish,
-            sumber: req.body.sumber,
-            content: req.body.content,
-            gambar: req.body.gambar,
-            categoryId: parseInt(req.body.categoryId),
-        },
-    });
+    data: {
+        id: req.body.id,
+        jenis: req.body.jenis,
+        judul: req.body.judul,
+        publish: req.body.publish,
+        sumber: req.body.sumber,
+        content: req.body.content,
+        gambar: req.body.gambar,
+        categoryId: parseInt(req.body.categoryId),
+    },
+});
     res.status(201).json({
         message: "news created",
         data: newnews,
@@ -36,10 +36,10 @@ newsRoutes.post("/", async (req, res) => {
 newsRoutes.get("/:categoryId", async (req, res) => {
     const { categoryId } = req.params;
     const news = await prisma.news.findMany({
-        where: {
-            categoryId: parseInt(categoryId),
-        },
-    });
+    where: {
+        categoryId: parseInt(categoryId),
+    },
+});
     res.status(200).send(news);
 });
 
